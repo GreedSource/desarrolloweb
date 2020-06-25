@@ -1,0 +1,59 @@
+﻿@model desarrolloweb.Models.TbProducto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_MasterProduct.cshtml";
+}
+
+
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+                <h1>Create product</h1>
+                <h3>@ViewBag.msg</h3>
+                <hr />
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Marca" class="control-label"></label>
+                        <input asp-for="Marca" class="form-control" />
+                        <span asp-validation-for="Marca" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>
+                        <input asp-for="Descripcion" class="form-control" />
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Precio" class="control-label"></label>
+                        <input asp-for="Precio" class="form-control" />
+                        <span asp-validation-for="Precio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Rate" class="control-label"></label>
+                        <input asp-for="Rate" class="form-control" />
+                        <span asp-validation-for="Rate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Img" class="control-label"></label>
+                        <input type="file" name="file" required id="file" />
+                        <span asp-validation-for="Img" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" style="width: 100%;" />
+                    </div>
+                </form>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

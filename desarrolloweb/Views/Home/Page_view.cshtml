@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Pagina con calificaciones";
+    Layout = "~/Views/Shared/_MasterView.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css" />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col" style="text-align: center">Puntuaje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewBag.Nombre
+            </td>
+            <td>
+                <div id="@ViewBag.ID"></div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section js{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"></script>
+    <script>
+        new Chartist.Pie("#@ViewBag.ID", {
+            series: [@ViewBag.Q]
+        }, {
+            donut: true,
+            donutWidth: 60,
+            donutSolid: true,
+                startAngle: 270,
+                showLabel: false
+        });
+    </script>
+
+
+} 

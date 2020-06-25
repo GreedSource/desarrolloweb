@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Combinaciones de un dado";
+    Layout = "~/Views/Shared/_MasterView.cshtml";
+}
+
+<p>
+    Diseña un programa que muestre todas las combinaciones posibles al momento de lanzar dos dados de 6
+    caras.
+</p>
+<div class="card mb-4">
+    <div class="card-body">
+        @Html.Raw(@ViewBag.Combinaciones)
+    </div>
+</div>
+
+
+@section js{ 
+
+}

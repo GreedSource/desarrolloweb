@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewData["Title"] = "Sopa de letras";
+    Layout = "~/Views/Shared/_MasterView.cshtml";
+}
+<style>
+    .p {
+        /* 16 * 0.0625 = 1px */
+        letter-spacing: 1em;
+    }
+</style>
+    <form onsubmit="generarInput(event, this)" id="form-input">
+        <div class="row">
+            <div class="col-md-4">
+                Número de filas
+                <input type="number" name="nf" id="nf" class="form-control" value="1" />
+            </div>
+            <div class="col-md-4">
+                Número de columnas
+                <input type="number" id="nc" name="nc" class="form-control" value="1" />
+            </div>
+            <div class="col-md-4">
+                Número de palabras a buscar:
+                <input type="number" id="np" name="np" class="form-control" value="1" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><input type="submit" value="Crear sopa de letras" class="btn btn-primary form-control" /></div>
+            <div class="col-md-3"><input type="button" value="Ejemplo" onclick="example()" class="btn btn-primary form-control" /></div>
+        </div>
+    </form>
+    <hr />
+    <div class="container-fluid">
+        <form onsubmit="postData(event, this)" id="form-dinamic">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="input" class="input">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="buscar">
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="data">
+                <div class="col-md-3"></div>
+                <div class="col-md-6"><input type="submit" value="Procesar información" class="btn btn-primary form-control" /></div>
+            </div>
+        </form>
+    </div>
+    
+
+@section js{ 
+    <script>
+        $(document).ready(function(){
+            $('#data').hide();
+        })
+
+        
+
+        function generarInput(e, form) {
+            e.preventDefault();
+            var column = $('#nc').val();
+            var row = $('#nf').val();
+            var search = $('#np').val();
+            $("#input").empty();
+            for (var i = 0; i < row; i++) {
+                var fila = i + 1;
+                var input = "<div class='col-md-12'>Fila " + fila + ":<input type='text' name='row[]' id='row[]' class='form-control' maxlength='" + column + "' minlength='" + column +"' required/></div>";
+                $("#input").append(input);
+            }
+            $("#buscar").empty();
+            for (var i = 0; i < search; i++) {
+                var fila = i + 1;
+                var input = "<div class='col-md-12'>Palabra " + fila + ":<input type='text' name='search[]' id='search[]' class='form-control' maxlength='" + column + "' required /></div>";
+                $("#buscar").append(input);
+            }
+            $('#data').show();
+        }
+
+        function example() {
+            const rows = ["foktaicergniica", "grtcuyagtreuniv", "rtaathurdtcmcbf", "einntcflouheior", "cliacivomprsaba", "iytdyiitageuron", "ffpasiatdbfwcnc", "rawtkilvhsbcaai", "axwsfdaudqdxnhn", "nzxibdaiutvaajd", "cekmaeyiefdgdei", "irondssrlakbaaa", "tcayrurnoruegai", "sgrecianoruegaa", "agailatitaliatr"];
+            var busqueda = ["italia", "grecia", "canada", "india", "peru", "francia", "noruega"];
+            
+            
+            var column = 15;
+            var fila = 1;
+            $("#input").empty();
+            rows.forEach(function (element) {
+                var input = "<div class='col-md-12'>Fila " + fila + ":<input type='text' name='row[]' id='row[]' class='form-control' maxlength='" + column + "' minlength='" + column + "' value='" + element + "' required/></div>";
+                //console.log(element); // $(this).val()}
+                $("#input").append(input);
+                fila++;
+            });
+            fila = 1;
+            $("#buscar").empty();
+            busqueda.forEach(function (element) {
+                var input = "<div class='col-md-12'>Palabra " + fila + ":<input type='text' name='search[]' id='search[]' class='form-control' maxlength='" + column + "' value='" + element + "' required/></div>"; // $(this).val()}
+                $("#buscar").append(input);
+                fila++;
+            });
+            $('#data').show();
+        }
+        function postData(e, form) {
+            e.preventDefault();
+            /*var arr = $('input[name="row[]"]').map(function () {
+                console.log(this.value); // $(this).val()
+            }).get();*/
+
+            var formData = new FormData(form);
+            
+            $.ajax({
+                // la URL para la petición
+                url: '@Url.Action("Test", "Home")',
+                // la información a enviar
+                // (también es posible utilizar una cadena de datos)
+                data: formData,
+
+                // especifica si será una petición POST o GET
+                type: 'POST',
+
+                // el tipo de información que se espera de respuesta
+                // dataType : 'json',
+
+                // código a ejecutar si la petición es satisfactoria;
+                // la respuesta es pasada como argumento a la función
+                async: false,
+                success: function (data) {
+                    //alert(data);
+                    console.log(data);
+                    resultado(data);
+
+                },
+                // código a ejecutar si la petición falla;
+                // son pasados como argumentos a la función
+                // el objeto de la petición en crudo y código de estatus de la petición
+                error: function (xhr, status) {
+                    alert("error de solicitud");
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+                // código a ejecutar sin importar si la petición falló o no
+                //complete : function(xhr, status) {
+                //alert('Petición realizada');
+                //}
+            });
+        }
+
+        function resultado(data) {
+            $("#input").empty();
+            $("#buscar").empty();
+            $("#input").append("<h1>Sopa de letras</h1>");
+            data["sopa"].forEach(function (element) {
+                
+                $("#input").append('<label class="p">' + element + '</label>');
+                $("#input").append("<br>");
+            });
+            $("#buscar").append('<h1>Resultado</h1>');
+            $("#buscar").append('<ul class="list-group">');
+            data["Resultado"].forEach(function (element) {
+                var item = '<li class="list-group-item">' + element + '</li>';
+                $("#buscar").append(item);
+            });
+            $("#buscar").append('</ul>');
+            $('#data').hide();
+        }
+
+    </script>
+}
