@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "auE5P4zyENAzbxfMVRUgWVnp8SHF6+2fjKAdhl/O2F9xuKY19xn1cKukTNf7D3KyuaGx7uBs1KylkxoG+hM27Q==",
+  "dgSpecHash": "dBU/gzX3g5T4QbLoypMpY1N+bVOmDDPC4+aI01UR8hfOdJVQ7vVZpNPud8XTtjFj/UoDBZXmrxsjY8YhrhxfEg==",
   "success": true,
   "projectFilePath": "C:\\Users\\greed\\source\\repos\\desarrolloweb\\desarrolloweb\\desarrolloweb.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\greed\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\greed\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\greed\\.nuget\\packages\\microsoft.applicationinsights\\2.14.0\\microsoft.applicationinsights.2.14.0.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.5\\microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.5\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.5.nupkg.sha512",
@@ -117,7 +120,7 @@
     "C:\\Users\\greed\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
-    "C:\\Users\\greed\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\greed\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",
     "C:\\Users\\greed\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",

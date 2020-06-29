@@ -1,0 +1,4 @@
+Sitemap: https://desarrollowebutm.azurewebsites.net/sitemap.xml
+User-agent: googlebot
+Disallow: /assets/
+Disallow: /js/

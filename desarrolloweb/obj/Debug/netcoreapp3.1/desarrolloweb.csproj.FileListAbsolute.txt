@@ -430,3 +430,7 @@ C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\
 C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\desarrolloweb.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Create.cshtml.g.cs
+C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Details.cshtml.g.cs
+C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Edit.cshtml.g.cs
+C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\Razor\Views\Producto\List.cshtml.g.cs
+C:\Users\greed\source\repos\desarrolloweb\desarrolloweb\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Delete.cshtml.g.cs

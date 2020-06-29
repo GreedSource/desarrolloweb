@@ -1,8 +1,10 @@
-﻿@model IEnumerable<desarrolloweb.Models.TbProducto>
+﻿@*model IEnumerable<desarrolloweb.Models.TbProducto>*@
+@model PaginatedList<desarrolloweb.Models.TbProducto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MasterProduct.cshtml";
 }
+
 <section id="home-section" class="hero">
     <div class="home-slider owl-carousel">
         <div class="slider-item" style="background-image: url(@Url.Content("~/assets/images/bg_1.jpg"));">
@@ -11,9 +13,8 @@
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
                     <div class="col-md-12 ftco-animate text-center">
-                        <h1 class="mb-2">We serve Fresh Vegestables &amp; Fruits</h1>
-                        <h2 class="subheading mb-4">We deliver organic vegetables &amp; fruits</h2>
-                        <p><a href="#" class="btn btn-primary">View Details</a></p>
+                        <h1 class="mb-2">Zapataria regional Yucatán</h1>
+                        <h2 class="subheading mb-4">Ofrece siempre el mejor calzado</h2>
                     </div>
 
                 </div>
@@ -26,9 +27,8 @@
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
                     <div class="col-sm-12 ftco-animate text-center">
-                        <h1 class="mb-2">100% Fresh &amp; Organic Foods</h1>
-                        <h2 class="subheading mb-4">We deliver organic vegetables &amp; fruits</h2>
-                        <p><a href="#" class="btn btn-primary">View Details</a></p>
+                        <h1 class="mb-2">Zapataria regional Yucatán</h1>
+                        <h2 class="subheading mb-4">Ofrece siempre el mejor calzado</h2>
                     </div>
 
                 </div>
@@ -38,17 +38,17 @@
 </section>
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10 mb-5 text-center">
-                <ul class="product-category">
-                    <li><a href="#" class="active">All</a></li>
-                    <li><a href="#">Vegetables</a></li>
-                    <li><a href="#">Fruits</a></li>
-                    <li><a href="#">Juice</a></li>
-                    <li><a href="#">Dried</a></li>
-                </ul>
-            </div>
-        </div>
+        @*<div class="row justify-content-center">
+                <div class="col-md-10 mb-5 text-center">
+                    <ul class="product-category">
+                        <li><a href="#" class="active">All</a></li>
+                        <li><a href="#">Vegetables</a></li>
+                        <li><a href="#">Fruits</a></li>
+                        <li><a href="#">Juice</a></li>
+                        <li><a href="#">Dried</a></li>
+                    </ul>
+                </div>
+            </div>*@
         <div class="row">
             @foreach (var item in Model)
             {
@@ -67,7 +67,7 @@
                             </div>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
                                 </div>
@@ -76,21 +76,41 @@
                     </div>
                 </div>
             }
-            </div>
+        </div>
         <div class="row mt-5">
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        <li><a href="#">&lt;</a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+                        <li>
+                            <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="@prevDisabled">
+                                &lt;
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="@nextDisabled">
+                                &gt;
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+
+@section js{
+    @if (ViewBag.logged == false)
+    {
+        <script>
+            alert('Usuario no encontrado');
+        </script>
+    }
+
+}

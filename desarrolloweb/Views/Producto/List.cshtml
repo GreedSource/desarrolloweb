@@ -1,0 +1,74 @@
+﻿@model IEnumerable<desarrolloweb.Models.TbProducto>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_MasterProduct.cshtml";
+}
+
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+                <h1>Listado de productos</h1><p><a asp-action="Create">Crear nuevo</a></p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Marca)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Precio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Rate)
+                            </th>
+                            <th>
+                                Imagen
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Marca)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Precio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Rate)
+                                </td>
+                                <td>
+                                    <img height="100" width="100" src="@Url.Content(item.Img)" />
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section js{ 
+
+}
